@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeStick - Koleksi Sticker WA Meme Terlengkap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .sticker-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .sticker-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating-animation {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .pulse-border {
+            animation: pulse-border 2s infinite;
+        }
+        
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(99, 102, 241, 0.3); }
+            50% { border-color: rgba(99, 102, 241, 0.8); }
+        }
+        
+        .category-active {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+        }
+        
+        .search-focus {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                        <i data-lucide="smile" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                        MemeStick
+                    </h1>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Beranda</a>
+                    <a href="#categories" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Kategori</a>
+                    <a href="#trending" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Trending</a>
+                    <a href="#create" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Buat Sticker</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 text-gray-600 hover:text-purple-600 transition-colors">
+                        <i data-lucide="heart" class="w-5 h-5"></i>
+                    </button>
+                    <button class="p-2 text-gray-600 hover:text-purple-600 transition-colors">
+                        <i data-lucide="download" class="w-5 h-5"></i>
+                    </button>
+                    <button id="mobile-menu" class="md:hidden p-2 text-gray-600">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="floating-animation absolute top-20 left-10 w-20 h-20 bg-white rounded-full"></div>
+            <div class="floating-animation absolute top-40 right-20 w-16 h-16 bg-pink-300 rounded-full" style="animation-delay: 0.5s"></div>
+            <div class="floating-animation absolute bottom-40 left-1/4 w-12 h-12 bg-purple-300 rounded-full" style="animation-delay: 1s"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto text-center px-4 relative z-10">
+            <h1 class="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight">
+                Koleksi <span class="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">Meme</span> Terlengkap
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-12 max-w-2xl mx-auto">
+                Ribuan sticker meme lucu untuk WhatsApp mu. Download gratis, update terus, dan bikin chat makin seru!
+            </p>
+            
+            <!-- Search Bar -->
+            <div class="max-w-2xl mx-auto mb-8">
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="search-input"
+                        placeholder="Cari sticker meme favorit kamu..." 
+                        class="w-full px-6 py-4 pl-14 text-lg bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl text-white placeholder-gray-300 focus:outline-none focus:ring-4 focus:ring-white/20 search-focus"
+                    >
+                    <i data-lucide="search" class="absolute left-5 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-300"></i>
+                    <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-pink-500 to-purple-600 px-6 py-2 rounded-xl text-white font-semibold hover:shadow-lg transition-all">
+                        Cari
+                    </button>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-white text-purple-600 px-8 py-4 rounded-2xl font-bold text-lg hover-lift hover:bg-gray-50">
+                    <i data-lucide="download" class="w-5 h-5 inline mr-2"></i>
+                    Download Gratis
+                </button>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-2xl font-bold text-lg hover-lift hover:bg-white/10">
+                    <i data-lucide="play" class="w-5 h-5 inline mr-2"></i>
+                    Lihat Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-purple-600 mb-2">10K+</div>
+                    <div class="text-gray-600">Sticker Meme</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-pink-600 mb-2">500K+</div>
+                    <div class="text-gray-600">Download</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">50+</div>
+                    <div class="text-gray-600">Kategori</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-purple-600 mb-2">24/7</div>
+                    <div class="text-gray-600">Update</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section id="categories" class="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-800 mb-4">Kategori <span class="text-purple-600">Populer</span></h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Pilih kategori meme favorit kamu</p>
+            </div>
+            
+            <!-- Category Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12" id="category-filter">
+                <button class="category-btn category-active px-6 py-3 rounded-full font-semibold transition-all" data-category="all">
+                    Semua
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-semibold bg-white text-gray-700 hover:bg-purple-100 transition-all" data-category="trending">
+                    🔥 Trending
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-semibold bg-white text-gray-700 hover:bg-purple-100 transition-all" data-category="lucu">
+                    😂 Lucu
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-semibold bg-white text-gray-700 hover:bg-purple-100 transition-all" data-category="sedih">
+                    😢 Sedih
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-semibold bg-white text-gray-700 hover:bg-purple-100 transition-all" data-category="marah">
+                    😠 Marah
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-semibold bg-white text-gray-700 hover:bg-purple-100 transition-all" data-category="cinta">
+                    ❤️ Cinta
+                </button>
+            </div>
+            
+            <!-- Sticker Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6" id="sticker-grid">
+                <!-- Sticker items will be populated by JavaScript -->
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-bold hover-lift">
+                    Muat Lebih Banyak
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Section -->
+    <section id="trending" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-800 mb-4">🔥 <span class="text-orange-500">Trending</span> Hari Ini</h2>
+                <p class="text-xl text-gray-600">Sticker yang lagi hits banget!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl p-8 text-white hover-lift">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="trending-up" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">#1 Trending</h3>
+                            <p class="opacity-90">Meme Kucing Lucu</p>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold mb-2">2.5K</div>
+                    <div class="opacity-90">Download hari ini</div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl p-8 text-white hover-lift">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="heart" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">#2 Popular</h3>
+                            <p class="opacity-90">Meme Galau</p>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold mb-2">1.8K</div>
+                    <div class="opacity-90">Download hari ini</div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl p-8 text-white hover-lift">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="star" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">#3 Rising</h3>
+                            <p class="opacity-90">Meme Gaming</p>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold mb-2">1.2K</div>
+                    <div class="opacity-90">Download hari ini</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Create Sticker Section -->
+    <section id="create" class="py-20 bg-gradient-to-br from-indigo-100 to-purple-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-800 mb-4">Buat <span class="text-indigo-600">Sticker</span> Sendiri</h2>
+                <p class="text-xl text-gray-600">Tools gratis untuk membuat sticker meme kamu sendiri</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="sticker-card rounded-3xl p-8">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold text-gray-800 mb-6">Upload & Edit</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center p-4 bg-green-50 rounded-xl">
+                                    <i data-lucide="upload" class="w-6 h-6 text-green-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Upload gambar kamu</span>
+                                </div>
+                                <div class="flex items-center p-4 bg-blue-50 rounded-xl">
+                                    <i data-lucide="edit" class="w-6 h-6 text-blue-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Edit dengan tools canggih</span>
+                                </div>
+                                <div class="flex items-center p-4 bg-purple-50 rounded-xl">
+                                    <i data-lucide="download" class="w-6 h-6 text-purple-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Download format sticker WA</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="border-4 border-dashed border-gray-300 rounded-3xl p-12 text-center hover:border-purple-400 transition-colors cursor-pointer" id="upload-area">
+                                <i data-lucide="image" class="w-16 h-16 text-gray-400 mx-auto mb-4"></i>
+                                <p class="text-gray-600 mb-4">Drag & drop gambar atau klik untuk upload</p>
+                                <button class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-xl font-semibold">
+                                    Pilih File
+                                </button>
+                                <input type="file" id="file-input" class="hidden" accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-800 mb-4">Kenapa Pilih <span class="text-purple-600">MemeStick</span>?</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-8 rounded-3xl hover:bg-purple-50 transition-colors hover-lift">
+                    <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="zap" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Super Cepat</h3>
+                    <p class="text-gray-600">Download langsung, tanpa ribet, tanpa iklan yang mengganggu</p>
+                </div>
+                
+                <div class="text-center p-8 rounded-3xl hover:bg-purple-50 transition-colors hover-lift">
+                    <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="shield" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">100% Aman</h3>
+                    <p class="text-gray-600">Bebas virus, bebas malware, semua file sudah di-scan</p>
+                </div>
+                
+                <div class="text-center p-8 rounded-3xl hover:bg-purple-50 transition-colors hover-lift">
+                    <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="refresh-cw" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Update Terus</h3>
+                    <p class="text-gray-600">Konten baru setiap hari, mengikuti trend meme terkini</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                            <i data-lucide="smile" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">MemeStick</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">Platform terlengkap untuk koleksi sticker meme WhatsApp Indonesia</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Kategori</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Meme Lucu</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Meme Sedih</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Meme Marah</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Meme Cinta</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Tools</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Buat Sticker</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Konverter</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Editor</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Template</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Support</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Tutorial</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Kontak</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 MemeStick. All rights reserved. Made with ❤️ in Indonesia</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button class="w-14 h-14 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-2xl flex items-center justify-center text-white hover:scale-110 transition-transform">
+            <i data-lucide="plus" class="w-6 h-6"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden">
+        <div class="fixed right-0 top-0 h-full w-80 bg-white p-6">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-xl font-bold">Menu</h3>
+                <button id="close-mobile-menu">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <nav class="space-y-4">
+                <a href="#home" class="block py-3 text-gray-700 hover:text-purple-600 font-medium">Beranda</a>
+                <a href="#categories" class="block py-3 text-gray-700 hover:text-purple-600 font-medium">Kategori</a>
+                <a href="#trending" class="block py-3 text-gray-700 hover:text-purple-600 font-medium">Trending</a>
+                <a href="#create" class="block py-3 text-gray-700 hover:text-purple-600 font-medium">Buat Sticker</a>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Sample sticker data
+        const stickerData = [
+            { id: 1, name: 'Kucing Nangis', category: 'sedih', trending: true, downloads: 1250 },
+            { id: 2, name: 'Doge Wow', category: 'lucu', trending: true, downloads: 2100 },
+            { id: 3, name: 'Pepe Marah', category: 'marah', trending: false, downloads: 890 },
+            { id: 4, name: 'Heart Eyes', category: 'cinta', trending: true, downloads: 1650 },
+            { id: 5, name: 'Spongebob Ketawa', category: 'lucu', trending: false, downloads: 950 },
+            { id: 6, name: 'Crying Cat', category: 'sedih', trending: false, downloads: 720 },
+            { id: 7, name: 'Angry Birds', category: 'marah', trending: true, downloads: 1100 },
+            { id: 8, name: 'Love Struck', category: 'cinta', trending: false, downloads: 650 },
+            { id: 9, name: 'Tom Jerry', category: 'lucu', trending: true, downloads: 1800 },
+            { id: 10, name: 'Broken Heart', category: 'sedih', trending: false, downloads: 580 },
+            { id: 11, name: 'Hulk Smash', category: 'marah', trending: false, downloads: 420 },
+            { id: 12, name: 'Cupid Arrow', category: 'cinta', trending: true, downloads: 1300 }
+        ];
+        
+        // Generate sticker grid
+        function generateStickerGrid(data) {
+            const grid = document.getElementById('sticker-grid');
+            grid.innerHTML = '';
+            
+            data.forEach(sticker => {
+                const stickerCard = document.createElement('div');
+                stickerCard.className = 'sticker-card rounded-2xl p-4 cursor-pointer group';
+                stickerCard.innerHTML = `
+                    <div class="aspect-square bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl mb-3 flex items-center justify-center relative overflow-hidden">
+                        ${sticker.trending ? '<div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">🔥</div>' : ''}
+                        <div class="text-4xl opacity-70 group-hover:scale-110 transition-transform">😂</div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="font-semibold text-gray-800 mb-1">${sticker.name}</h3>
+                        <p class="text-sm text-gray-500 mb-2">${sticker.downloads.toLocaleString()} downloads</p>
+                        <button class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 px-4 rounded-xl font-medium hover:shadow-lg transition-all transform hover:scale-105">
+                            <i data-lucide="download" class="w-4 h-4 inline mr-2"></i>
+                            Download
+                        </button>
+                    </div>
