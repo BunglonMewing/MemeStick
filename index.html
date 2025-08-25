@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MemeStick - Koleksi Sticker WA Meme Terlengkap</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Temukan dan download ribuan sticker meme WhatsApp gratis di MemeStick. Koleksi terlengkap, update setiap hari, dan mudah digunakan. Buat chat kamu makin seru!">
+    <meta name="keywords" content="sticker wa, sticker whatsapp, sticker meme, meme indonesia, download sticker, sticker lucu, sticker gratis">
+    <meta name="author" content="MemeStick">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stickerstick.netlify.app/">
+    <meta property="og:title" content="MemeStick - Koleksi Sticker WA Meme Terlengkap">
+    <meta property="og:description" content="Ribuan sticker meme lucu untuk WhatsApp mu. Download gratis, update terus, dan bikin chat makin seru!">
+    <meta property="og:image" content="https://stickerstick.netlify.app/assets/logo.svg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://stickerstick.netlify.app/">
+    <meta property="twitter:title" content="MemeStick - Koleksi Sticker WA Meme Terlengkap">
+    <meta property="twitter:description" content="Ribuan sticker meme lucu untuk WhatsApp mu. Download gratis, update terus, dan bikin chat makin seru!">
+    <meta property="twitter:image" content="https://stickerstick.netlify.app/assets/logo.svg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
     <style>
@@ -78,9 +98,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                        <i data-lucide="smile" class="w-6 h-6 text-white"></i>
-                    </div>
+                    <img src="assets/logo.svg" alt="MemeStick Logo" class="w-10 h-10">
                     <h1 class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                         MemeStick
                     </h1>
@@ -360,9 +378,7 @@
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center space-x-2 mb-6">
-                        <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                            <i data-lucide="smile" class="w-6 h-6 text-white"></i>
-                        </div>
+                        <img src="assets/logo.svg" alt="MemeStick Logo" class="w-10 h-10">
                         <h3 class="text-2xl font-bold">MemeStick</h3>
                     </div>
                     <p class="text-gray-400 mb-6">Platform terlengkap untuk koleksi sticker meme WhatsApp Indonesia</p>
@@ -441,44 +457,5 @@
         </div>
     </div>
 
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-        
-        // Sample sticker data
-        const stickerData = [
-            { id: 1, name: 'Kucing Nangis', category: 'sedih', trending: true, downloads: 1250 },
-            { id: 2, name: 'Doge Wow', category: 'lucu', trending: true, downloads: 2100 },
-            { id: 3, name: 'Pepe Marah', category: 'marah', trending: false, downloads: 890 },
-            { id: 4, name: 'Heart Eyes', category: 'cinta', trending: true, downloads: 1650 },
-            { id: 5, name: 'Spongebob Ketawa', category: 'lucu', trending: false, downloads: 950 },
-            { id: 6, name: 'Crying Cat', category: 'sedih', trending: false, downloads: 720 },
-            { id: 7, name: 'Angry Birds', category: 'marah', trending: true, downloads: 1100 },
-            { id: 8, name: 'Love Struck', category: 'cinta', trending: false, downloads: 650 },
-            { id: 9, name: 'Tom Jerry', category: 'lucu', trending: true, downloads: 1800 },
-            { id: 10, name: 'Broken Heart', category: 'sedih', trending: false, downloads: 580 },
-            { id: 11, name: 'Hulk Smash', category: 'marah', trending: false, downloads: 420 },
-            { id: 12, name: 'Cupid Arrow', category: 'cinta', trending: true, downloads: 1300 }
-        ];
-        
-        // Generate sticker grid
-        function generateStickerGrid(data) {
-            const grid = document.getElementById('sticker-grid');
-            grid.innerHTML = '';
-            
-            data.forEach(sticker => {
-                const stickerCard = document.createElement('div');
-                stickerCard.className = 'sticker-card rounded-2xl p-4 cursor-pointer group';
-                stickerCard.innerHTML = `
-                    <div class="aspect-square bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl mb-3 flex items-center justify-center relative overflow-hidden">
-                        ${sticker.trending ? '<div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">🔥</div>' : ''}
-                        <div class="text-4xl opacity-70 group-hover:scale-110 transition-transform">😂</div>
-                    </div>
-                    <div class="text-center">
-                        <h3 class="font-semibold text-gray-800 mb-1">${sticker.name}</h3>
-                        <p class="text-sm text-gray-500 mb-2">${sticker.downloads.toLocaleString()} downloads</p>
-                        <button class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 px-4 rounded-xl font-medium hover:shadow-lg transition-all transform hover:scale-105">
-                            <i data-lucide="download" class="w-4 h-4 inline mr-2"></i>
-                            Download
-                        </button>
-                    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/app.js"></script>
